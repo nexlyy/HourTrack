@@ -1,0 +1,37 @@
+[Unit]
+Description=HourTrack Telegram Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=hourtrack
+Group=hourtrack
+WorkingDirectory=/opt/hourtrack-bot
+EnvironmentFile=/opt/hourtrack-bot/.env
+ExecStart=/opt/hourtrack-bot/venv/bin/python -m bot.main
+Restart=always
+RestartSec=10
+TimeoutStopSec=20
+
+MemoryMax=256M
+TasksMax=64
+LimitNOFILE=4096
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+ReadWritePaths=/var/lib/hourtrack-bot /var/backups/hourtrack /tmp
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hourtrack-bot
+
+[Install]
+WantedBy=multi-user.target
