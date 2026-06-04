@@ -76,3 +76,6 @@ Deployment
 
 Runs on a Linux VPS under systemd as an isolated user.
 
+
+!!!PLEASE MAKE SURE!!!
+Please make sure that you created a folder "{database,handlers,keyboards,services,states,utils,middlewares}" in main folder "bot", that folder MUST be clean without any files, it is your localy database for next shifts 
